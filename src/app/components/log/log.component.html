@@ -1,0 +1,26 @@
+<div *ngIf="logs.length>0">
+<div class="row mt-3 text-center">
+  <h4>Logs</h4>
+</div>
+<div class="row">
+<div class="col-md-3"></div>
+<div class="col-md-6">
+  <ul class="list-group">
+    <li  *ngFor="let log of logs" [class]="log == selectedLog ? 'list-group-item-secondary' :null"  class="list-group-item d-flex justify-content-between align-items-center">
+      <a (click)="onSelect(log)"  href="#">{{log.text}}</a>
+      <span class="log-date">{{log.date | date: 'short'}}</span>
+      <i (click)="deletLog(log)" class="fa fa-remove text-danger"></i>
+    </li>
+  </ul>
+</div>
+<div class="col-md-3"></div>
+</div>
+</div>
+
+<div class="row" *ngIf="logs.length == 0">
+  <div class="col-md-3"></div>
+  <div class="col-md-6 text-center">
+    <p>No Logs yet.</p>
+  </div>
+  <div class="col-md-3"></div>
+</div>
